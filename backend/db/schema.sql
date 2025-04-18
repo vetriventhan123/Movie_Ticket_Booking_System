@@ -1,3 +1,7 @@
+create database moviee
+use moviee
+
+
 -- Movies Table
 CREATE TABLE movies (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,6 +43,7 @@ CREATE TABLE bookings (
     showtime VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (movie_id) REFERENCES movies(id)
+    seats TEXT NULL;
 );
 
 -- Booking Seats Table
