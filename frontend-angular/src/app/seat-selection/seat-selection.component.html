@@ -1,0 +1,37 @@
+<div class="seat-selection">
+  <h2>Select Your Seats for {{ movie?.title }}</h2>
+  <p>Showtime: {{ showtime }}</p>
+
+  <div *ngIf="isLoadingBookedSeats">Loading booked seats...</div>
+  <div *ngIf="bookingError" class="error">{{ bookingError }}</div>
+  <!-- Display all seats in a grid layout -->
+  <div
+    class="seats-container"
+    style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px"
+  >
+    <div
+      class="seat"
+      *ngFor="let seat of seats"
+      [ngClass]="{
+        booked: bookedSeats.includes(seat),
+        selected: isSeatSelected(seat),
+        available: !bookedSeats.includes(seat) && !isSeatSelected(seat)
+      }"
+      (click)="toggleSeat(seat)"
+    >
+      {{ seat }}
+    </div>
+  </div>
+
+  <!-- Show selected seats -->
+  <div class="selected-seats">
+    <h3>Selected Seats:</h3>
+    <p *ngIf="selectedSeats.length === 0">None</p>
+    <ul *ngIf="selectedSeats.length">
+      <li *ngFor="let seat of selectedSeats">{{ seat }}</li>
+    </ul>
+  </div>
+
+  <!-- Submit button -->
+  <button (click)="confirmBooking()">Submit</button>
+</div>

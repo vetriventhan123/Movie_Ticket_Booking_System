@@ -1,0 +1,38 @@
+<div *ngIf="loading" class="loading-message">Loading booking details...</div>
+
+<div *ngIf="error" class="error-message">
+  {{ error }} <a routerLink="/">Go Home</a>
+</div>
+
+<div *ngIf="booking$ | async as booking" class="confirmation-card">
+  <h1>Booking Confirmation</h1>
+  <p>Your booking was successful!</p>
+
+  <div class="confirmation-details">
+    <p><strong>Confirmation ID:</strong> {{ booking.id }}</p>
+    <p>
+      <strong>Movie:</strong>
+      {{ booking.movie_title || "Movie ID: " + booking.movie_id }}
+    </p>
+    <p><strong>Showtime:</strong> {{ booking.showtime }}</p>
+    <p><strong>Seats:</strong> {{ booking.seats.join(", ") || "N/A" }}</p>
+    <!-- Use DatePipe to format the date -->
+    <p>
+      <strong>Booked On:</strong>
+      {{ booking.created_at ? (booking.created_at | date : "medium") : "N/A" }}
+    </p>
+  </div>
+
+  <a routerLink="/">
+    <button style="margin-top: 20px">Book Another Movie</button>
+  </a>
+</div>
+
+<!-- Fallback if booking is null after loading and no error -->
+<div *ngIf="!loading && !error && !(booking$ | async)">
+  <p>
+    Booking details could not be loaded. Please check your bookings or contact
+    support.
+  </p>
+  <a routerLink="/">Go Home</a>
+</div>

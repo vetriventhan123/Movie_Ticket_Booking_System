@@ -1,0 +1,137 @@
+/* Container for grid layout with a light gradient background */
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+}
+
+/* Main movie details card with gradient background and fadeIn animation */
+.details-card {
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Fade in keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover effect for details card */
+.details-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Title styling with gradient text effect */
+.details-card h1 {
+    font-size: 2rem;
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+/* Paragraph styling */
+.details-card p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* Link styling for error or fallback messages */
+.error-message a,
+.details-card a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.error-message a:hover,
+.details-card a:hover {
+    text-decoration: underline;
+}
+
+/* Styling showtimes list */
+.details-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.details-card ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Book button styling with gradient effect and hover scaling */
+.details-card button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.details-card button:hover {
+    background: linear-gradient(45deg, #218838, #1e7e34);
+    transform: scale(1.05);
+}
+
+/* Back button styling override with gradient */
+.details-card > button {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #6c757d, #5a6268);
+}
+
+.details-card > button:hover {
+    background: linear-gradient(45deg, #5a6268, #545b62);
+}
+
+/* Loading message style with pulse animation */
+.loading-message {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #007bff;
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulse animation keyframes */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Error message style with shake animation */
+.error-message {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #dc3545;
+    animation: shake 0.5s;
+}
+
+/* Shake animation keyframes */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Fallback info styling */
+:not(.details-card) {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #6c757d;
+}

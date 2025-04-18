@@ -1,0 +1,57 @@
+<div *ngIf="loading" class="loading-message">Loading movie details...</div>
+
+<div *ngIf="error" class="error-message">
+  {{ error }} <a routerLink="/">Go back to movies</a>
+</div>
+
+<div *ngIf="movie$ | async as movie" class="details-card">
+  <h1>{{ movie.title }}</h1>
+  <p>
+    <strong>Description:</strong>
+    {{ movie.description || "No description available." }}
+  </p>
+  <p>
+    <strong>Duration:</strong>
+    {{ movie.duration ? movie.duration + " minutes" : "N/A" }}
+  </p>
+  <p><strong>Rating:</strong> {{ movie.rating || "N/A" }}</p>
+
+  <h2>Available Showtimes</h2>
+  <p>Select a showtime to book tickets:</p>
+  <ul>
+    <li
+      *ngFor="
+        let time of [
+          '10:00 AM',
+          '12:00 PM',
+          '2:00 PM',
+          '4:00 PM',
+          '6:00 PM',
+          '8:00 PM'
+        ]
+      "
+      style="
+        display: inline-block;
+        margin-right: 10px;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+      "
+    >
+      <button (click)="selectShowtime(movie, time)">Book {{ time }}</button>
+    </li>
+  </ul>
+
+  <button
+    (click)="goBack()"
+    style="margin-top: 20px; background-color: #6c757d"
+  >
+    Back to Movies
+  </button>
+</div>
+
+<!-- Fallback if movie is null after loading and no error -->
+<div *ngIf="!loading && !error && !(movie$ | async)">
+  <p>Movie details could not be loaded.</p>
+  <a routerLink="/">Go back to movies</a>
+</div>

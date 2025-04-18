@@ -1,0 +1,87 @@
+/* Global styles with gradient background animation */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Gradient background with subtle movement */
+  background: linear-gradient(120deg, #e0f7fa, #80deea);
+  background-size: 200% 200%;
+  animation: bgFlow 12s ease infinite;
+}
+
+@keyframes bgFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main container styling */
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header with animated gradient and smooth transitions */
+header {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(90deg, #da22ff, #9733ee);
+  background-size: 200% 200%;
+  animation: gradientFlow 8s ease infinite;
+  color: white;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.5s;
+}
+
+/* Subtle hover effect on the header */
+header:hover {
+  transform: scale(1.02);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header title and paragraph with fade-in effect */
+header h1, header p {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  animation-delay: 0.5s;
+}
+
+header p {
+  font-size: 1.2em;
+  margin: 10px 0 0;
+  animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Router outlet styling with a slide-in animation */
+router-outlet {
+  width: 100%;
+  display: block;
+  max-width: 800px;
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

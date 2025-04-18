@@ -1,0 +1,27 @@
+<header>
+  <h1>Movie Ticket Booking</h1>
+  <p>Book your favorite movie tickets easily and securely online.</p>
+</header>
+<h1>Available Movies</h1>
+
+<div *ngIf="loading" class="loading-message">Loading movies...</div>
+
+<div *ngIf="error" class="error-message">
+  {{ error }}
+</div>
+
+<ul *ngIf="!loading && !error && (movies$ | async) as movies">
+  <li *ngIf="movies.length === 0">No movies available at the moment.</li>
+  <li *ngFor="let movie of movies" class="movie-item">
+    <a
+      [routerLink]="['/movies', movie.id]"
+      style="font-weight: bold; font-size: 1.1em"
+    >
+      {{ movie.title }}
+    </a>
+    <p style="margin: 5px 0 0 0; color: #555">
+      Duration: {{ movie.duration ? movie.duration + " mins" : "N/A" }} |
+      Rating: {{ movie.rating || "N/A" }}
+    </p>
+  </li>
+</ul>

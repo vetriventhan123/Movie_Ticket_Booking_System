@@ -1,0 +1,116 @@
+/* Overall container for the confirmation card */
+.confirmation-card {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 32px;
+    margin: 24px auto;
+    max-width: 600px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: 200% auto;
+    animation: gradientShift 5s ease infinite;
+}
+
+/* Animate the gradient background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.confirmation-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings with subtle text shadow for emphasis */
+.confirmation-card h1 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the confirmation details paragraphs */
+.confirmation-details p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* Emphasize labels inside details */
+.confirmation-details strong {
+    color: #2c3e50;
+}
+
+/* Button styling with animated gradient background */
+.confirmation-card button {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-position 0.3s ease, transform 0.2s ease;
+    background-size: 200% auto;
+}
+
+.confirmation-card button:hover {
+    background-position: right center;
+    transform: scale(1.05);
+}
+
+/* Loading message styling with fade-in effect */
+.loading-message {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #2980b9;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Error message styling with subtle transition */
+.error-message {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #c0392b;
+    border: 1px solid #e74c3c;
+    background-color: #fdecea;
+    padding: 16px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.error-message:hover {
+    transform: scale(1.02);
+}
+
+.error-message a {
+    color: #c0392b;
+    text-decoration: underline;
+}
+
+/* Fallback message styling */
+.confirmation-card ~ div {
+    margin: 24px auto;
+    max-width: 600px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}

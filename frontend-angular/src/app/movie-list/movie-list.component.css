@@ -1,0 +1,118 @@
+/* Container for the movie list with grid layout */
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    color: #f0f0f0;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Keyframes for a subtle pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Styling each movie item with gradient background and animated border effect */
+li.movie-item {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animated rotating gradient border using a pseudo-element */
+li.movie-item::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+    animation: rotate 4s linear infinite;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover effects including elevation and pulse animation */
+li.movie-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: pulse 1s infinite;
+}
+
+/* Styling the movie title link with brighter colours */
+.movie-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.movie-item a:hover {
+    color: #ffe066;
+}
+
+/* Styling the movie details paragraph */
+li.movie-item p {
+    margin: 12px 0 0;
+    font-size: 1em;
+    color: #f0f0f0;
+}
+
+/* Styling for loading or error messages */
+.loading-message, .error-message {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: #555;
+}
+
+.error-message {
+    color: #d00;
+}
